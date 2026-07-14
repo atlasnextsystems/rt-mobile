@@ -3,9 +3,9 @@
     "397": {
       "FR": {
         "215": 0,
-        "040": 9,
+        "040": 0,
         "089": 0,
-        "1H6": 2,
+        "1H6": 0,
         "1G3": 0,
         "3R3": 0,
         "8X8": 0
@@ -17,23 +17,23 @@
         "1H6": 0,
         "1G3": 0,
         "3R3": 0,
-        "8X8": 0
+        "8X8": 1
       },
       "RR_RH": {
-        "215": 0,
+        "215": 1,
         "040": 0,
         "089": 0,
         "1H6": 1,
         "1G3": 2,
-        "3R3": 0,
-        "8X8": 0
+        "3R3": 1,
+        "8X8": 1
       },
       "BAR_RR": {
         "215": 0,
         "040": 0,
-        "089": 0,
+        "089": 1,
         "1H6": 1,
-        "1G3": 22,
+        "1G3": 21,
         "3R3": 0,
         "8X8": 0
       }
@@ -41,32 +41,32 @@
     "535": {
       "FR": {
         "215": 2,
-        "040": 1,
+        "040": 2,
+        "089": 0,
+        "1H6": 2,
+        "1G3": 0,
+        "3R3": 0,
+        "8V5": 0
+      },
+      "HB": {
+        "215": 2,
+        "040": 0,
         "089": 0,
         "1H6": 2,
         "1G3": 0,
         "3R3": 1,
-        "8V5": 0
-      },
-      "HB": {
-        "215": 1,
-        "040": 0,
-        "089": 1,
-        "1H6": 1,
-        "1G3": 0,
-        "3R3": 0,
         "8V5": 0
       }
     },
     "d90": {
       "FR": {
         "215": 0,
-        "040": 0,
+        "040": 1,
         "089": 1,
         "1H6": 0,
         "1G3": 0,
         "3R3": 0,
-        "8X2": 1
+        "8X2": 0
       },
       "RR_LH": {
         "215": 0,
@@ -75,10 +75,10 @@
         "1H6": 0,
         "1G3": 0,
         "3R3": 1,
-        "8X2": 0
+        "8X2": 1
       },
       "RR_RH": {
-        "215": 0,
+        "215": 1,
         "040": 0,
         "089": 1,
         "1H6": 0,
@@ -5091,6 +5091,426 @@
       "quantity": 1,
       "previousStock": 0,
       "newStock": 1,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrks9tqa3uon",
+      "timestamp": "2026-07-14T15:05:44.387Z",
+      "carId": "397",
+      "part": "BAR_RR",
+      "color": "089",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 0,
+      "newStock": 1,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrkt0xsjoopb",
+      "timestamp": "2026-07-14T15:26:49.363Z",
+      "carId": "535",
+      "part": "FR",
+      "color": "040",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 1,
+      "newStock": 2,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrkt36ayyp3b",
+      "timestamp": "2026-07-14T15:28:33.706Z",
+      "carId": "d90",
+      "part": "RR_LH",
+      "color": "8X2",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 0,
+      "newStock": 1,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrkt3ieh08xo",
+      "timestamp": "2026-07-14T15:28:49.385Z",
+      "carId": "397",
+      "part": "RR_RH",
+      "color": "8X8",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 0,
+      "newStock": 1,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrkt3r2pbqkn",
+      "timestamp": "2026-07-14T15:29:00.625Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 9,
+      "newStock": 10,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt3rw7no9x",
+      "timestamp": "2026-07-14T15:29:01.687Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 10,
+      "newStock": 9,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt3s8fk33o",
+      "timestamp": "2026-07-14T15:29:02.127Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 9,
+      "newStock": 8,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt3seebro7",
+      "timestamp": "2026-07-14T15:29:02.342Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 8,
+      "newStock": 7,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt3smren5w",
+      "timestamp": "2026-07-14T15:29:02.643Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 7,
+      "newStock": 6,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt3srk27ra",
+      "timestamp": "2026-07-14T15:29:02.816Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 6,
+      "newStock": 5,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt3sw3xzqp",
+      "timestamp": "2026-07-14T15:29:02.979Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 5,
+      "newStock": 4,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt3t0unin1",
+      "timestamp": "2026-07-14T15:29:03.150Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 4,
+      "newStock": 3,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt3t68igzz",
+      "timestamp": "2026-07-14T15:29:03.344Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 3,
+      "newStock": 2,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt3tals3px",
+      "timestamp": "2026-07-14T15:29:03.501Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 2,
+      "newStock": 1,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt3tfdx18w",
+      "timestamp": "2026-07-14T15:29:03.673Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 1,
+      "newStock": 0,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt3x11tyc0",
+      "timestamp": "2026-07-14T15:29:08.341Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 0,
+      "newStock": 1,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt3xrl4mkb",
+      "timestamp": "2026-07-14T15:29:09.297Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 1,
+      "newStock": 0,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt3yj6bqh5",
+      "timestamp": "2026-07-14T15:29:10.290Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 0,
+      "newStock": 1,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt40tesyez",
+      "timestamp": "2026-07-14T15:29:13.251Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "add",
+      "quantity": 10,
+      "previousStock": 1,
+      "newStock": 11,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt41hxv0vm",
+      "timestamp": "2026-07-14T15:29:14.133Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "remove",
+      "quantity": 10,
+      "previousStock": 11,
+      "newStock": 1,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt4482uox2",
+      "timestamp": "2026-07-14T15:29:17.666Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "040",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 1,
+      "newStock": 0,
+      "operator": "davi"
+    },
+    {
+      "id": "mrkt45j4n6pa",
+      "timestamp": "2026-07-14T15:29:19.360Z",
+      "carId": "535",
+      "part": "FR",
+      "color": "3R3",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 1,
+      "newStock": 0,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrkt5z4ao6k3",
+      "timestamp": "2026-07-14T15:30:44.362Z",
+      "carId": "397",
+      "part": "RR_RH",
+      "color": "215",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 0,
+      "newStock": 1,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrkt79eys1kd",
+      "timestamp": "2026-07-14T15:31:44.362Z",
+      "carId": "535",
+      "part": "HB",
+      "color": "215",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 1,
+      "newStock": 2,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrktb4azu10i",
+      "timestamp": "2026-07-14T15:34:44.363Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "1H6",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 2,
+      "newStock": 1,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrktdowe5mg2",
+      "timestamp": "2026-07-14T15:36:44.366Z",
+      "carId": "d90",
+      "part": "RR_RH",
+      "color": "215",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 0,
+      "newStock": 1,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrktg9hk3uld",
+      "timestamp": "2026-07-14T15:38:44.360Z",
+      "carId": "d90",
+      "part": "FR",
+      "color": "040",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 0,
+      "newStock": 1,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrktiu2xabjr",
+      "timestamp": "2026-07-14T15:40:44.361Z",
+      "carId": "d90",
+      "part": "FR",
+      "color": "8X2",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 1,
+      "newStock": 0,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrktmoyyagu8",
+      "timestamp": "2026-07-14T15:43:44.362Z",
+      "carId": "397",
+      "part": "BAR_RR",
+      "color": "1G3",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 22,
+      "newStock": 21,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrktohn0a5ae",
+      "timestamp": "2026-07-14T15:45:08.172Z",
+      "carId": "535",
+      "part": "HB",
+      "color": "089",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 1,
+      "newStock": 0,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrktoq9v7axw",
+      "timestamp": "2026-07-14T15:45:19.363Z",
+      "carId": "397",
+      "part": "RR_LH",
+      "color": "8X8",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 0,
+      "newStock": 1,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrktpdf6r6bq",
+      "timestamp": "2026-07-14T15:45:49.362Z",
+      "carId": "535",
+      "part": "HB",
+      "color": "3R3",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 0,
+      "newStock": 1,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrktq0kg6cb6",
+      "timestamp": "2026-07-14T15:46:19.360Z",
+      "carId": "397",
+      "part": "RR_RH",
+      "color": "3R3",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 0,
+      "newStock": 1,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrktqnpu4eqz",
+      "timestamp": "2026-07-14T15:46:49.362Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "1H6",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 1,
+      "newStock": 0,
+      "operator": "sistema"
+    },
+    {
+      "id": "mrktueqw20sb",
+      "timestamp": "2026-07-14T15:49:44.360Z",
+      "carId": "535",
+      "part": "HB",
+      "color": "1H6",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 1,
+      "newStock": 2,
       "operator": "sistema"
     }
   ]
