@@ -4,7 +4,7 @@
 // (ex: setInterval a cada 5-15s) para refletir o que o mobile lançou.
 // ==========================================
 
-const API_BASE = window.RT_API_BASE || 'https://SEU-DOMINIO-DA-API.com/api';
+const API_BASE = window.RT_API_BASE || 'http://localhost:3000/api';
 
 async function fetchCurrentStock() {
   const res = await fetch(`${API_BASE}/stock`);
