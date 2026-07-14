@@ -127,6 +127,21 @@ function bindUiActions() {
   if (qtyMinus) qtyMinus.onclick = () => setQty(selection.qty - 1);
   if (qtyPlus) qtyPlus.onclick = () => setQty(selection.qty + 1);
 
+  document.querySelectorAll('.m-back-btn').forEach((btn) => {
+    btn.onclick = () => {
+      const targetStep = Number(btn.dataset.backStep || 1);
+      if (targetStep === 1) {
+        selection = { carId: selection.carId, part: null, color: null, qty: 1 };
+      } else if (targetStep === 2) {
+        selection.color = null;
+        selection.qty = 1;
+      } else if (targetStep === 3) {
+        selection.qty = 1;
+      }
+      showStep(targetStep);
+    };
+  });
+
   const keypad = el('qty-keypad');
   if (keypad) {
     keypad.addEventListener('click', (event) => {

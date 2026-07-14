@@ -50,6 +50,13 @@ body {
 }
 .m-step-visible { opacity: 1; transform: translateY(0); max-height: 1200px; }
 .m-step-title { font-family: var(--font-title); font-size: 0.95rem; font-weight: 700; color: var(--text-secondary); }
+.m-step-header { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.m-back-btn {
+  border: 1px solid rgba(99,102,241,0.18); border-radius: 999px; padding: 0.4rem 0.7rem;
+  background: rgba(99,102,241,0.08); color: var(--accent-color); font-size: 0.8rem; font-weight: 700;
+  cursor: pointer; transition: transform 0.15s ease, background 0.15s ease;
+}
+.m-back-btn:active { transform: scale(0.97); }
 
 .m-pill-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
 .m-pill-btn {
