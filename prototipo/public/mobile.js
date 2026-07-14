@@ -27,10 +27,12 @@ async function refreshStock() {
 function renderCarStep() {
   const grid = el('car-grid');
   grid.innerHTML = '';
-  ALL_CARS.forEach((carId) => {
+  const stockCars = liveStock ? Object.keys(liveStock) : [];
+  const cars = Array.from(new Set([...(ALL_CARS || []), ...stockCars]));
+  cars.forEach((carId) => {
     const btn = document.createElement('button');
     btn.className = 'm-pill-btn';
-    btn.textContent = CAR_MODELS[carId];
+    btn.textContent = CAR_MODELS[carId] || carId;
     btn.onclick = () => selectCar(carId);
     grid.appendChild(btn);
   });
@@ -38,7 +40,7 @@ function renderCarStep() {
 
 function selectCar(carId) {
   selection = { carId, part: null, color: null, qty: 0 };
-  highlightSelected('car-grid', CAR_MODELS[carId]);
+  highlightSelected('car-grid', CAR_MODELS[carId] || carId);
   renderPartStep(carId);
   showStep(2);
 }
@@ -47,7 +49,14 @@ function selectCar(carId) {
 function renderPartStep(carId) {
   const grid = el('part-grid');
   grid.innerHTML = '';
-  const parts = Object.keys((liveStock && liveStock[carId]) || {});
+  let parts = Object.keys((liveStock && liveStock[carId]) || {});
+  if (!parts.length && window.MODEL_PARTS && window.MODEL_PARTS[carId]) {
+    parts = window.MODEL_PARTS[carId];
+  }
+  if (!parts.length) {
+    grid.innerHTML = '<div class="m-empty-state">Nenhuma peça disponível para este carro.</div>';
+    return;
+  }
   parts.forEach((partKey) => {
     const btn = document.createElement('button');
     btn.className = 'm-pill-btn';
@@ -69,7 +78,14 @@ function selectPart(partKey) {
 function renderColorStep(carId, partKey) {
   const grid = el('color-grid');
   grid.innerHTML = '';
-  const colors = Object.keys(liveStock[carId][partKey]);
+  let colors = liveStock?.[carId]?.[partKey] ? Object.keys(liveStock[carId][partKey]) : [];
+  if (!colors.length && window.MODEL_PART_COLORS && window.MODEL_PART_COLORS[carId]?.[partKey]) {
+    colors = window.MODEL_PART_COLORS[carId][partKey];
+  }
+  if (!colors.length) {
+    grid.innerHTML = '<div class="m-empty-state">Nenhuma cor disponível para esta peça.</div>';
+    return;
+  }
   colors.forEach((colorKey) => {
     const meta = COLORS[colorKey] || { name: colorKey, hex: '#ccc' };
     const btn = document.createElement('button');
@@ -101,11 +117,16 @@ function updateQtyStep() {
   const meta = COLORS[color] || { name: color };
   const partLabel = (PARTS[part] && PARTS[part].label) || part;
   el('selection-summary').innerHTML =
-    `<b>${CAR_MODELS[carId]}</b> · <b>${partLabel}</b> · <b>${color}</b> (${meta.name})`;
+    `<b>${CAR_MODELS[carId] || carId}</b> · <b>${partLabel}</b> · <b>${color}</b> (${meta.name})`;
   el('qty-value').textContent = qty;
-  const current = liveStock[carId][part][color];
-  el('current-stock-display').innerHTML = `Estoque atual: <b>${current}</b> peça(s)`;
-  el('btn-remove').disabled = current < qty || qty === 0;
+  const current = liveStock?.[carId]?.[part]?.[color];
+  if (typeof current === 'number') {
+    el('current-stock-display').innerHTML = `Estoque atual: <b>${current}</b> peça(s)`;
+    el('btn-remove').disabled = current < qty || qty === 0;
+  } else {
+    el('current-stock-display').innerHTML = 'Estoque atual: <b>não disponível</b>';
+    el('btn-remove').disabled = true;
+  }
 }
 
 function setQty(value) {
