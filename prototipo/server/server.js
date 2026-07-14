@@ -64,6 +64,7 @@ function loadDB() {
     const initial = {
       stock: INITIAL_STOCK,
       rates: DEFAULT_RATES,
+      targets: {}, // metas por carro+peça+cor: { carId: { partKey: { colorKey: int } } }
       timeScaleHours: 8,
       movements: [] // histórico de entradas/saídas
     };
@@ -71,7 +72,10 @@ function loadDB() {
     fs.writeFileSync(DB_FILE, JSON.stringify(initial, null, 2));
     return initial;
   }
-  return JSON.parse(fs.readFileSync(DB_FILE, 'utf-8'));
+  const data = JSON.parse(fs.readFileSync(DB_FILE, 'utf-8'));
+  // Garante retrocompatibilidade
+  if (!data.targets) data.targets = {};
+  return data;
 }
 
 function saveDB(db) {
@@ -84,7 +88,28 @@ let db = loadDB();
 // GET /api/stock -> estoque completo (rt-scan e mobile usam isso)
 // ---------------------------------------------------
 app.get('/api/stock', (req, res) => {
-  res.json({ stock: db.stock, rates: db.rates, timeScaleHours: db.timeScaleHours });
+  res.json({ stock: db.stock, rates: db.rates, targets: db.targets, timeScaleHours: db.timeScaleHours });
+});
+
+// ---------------------------------------------------
+// PUT /api/targets -> salvar metas de produção por carro+peça+cor
+// body: { targets: { carId: { partKey: { colorKey: int } } } }
+// ---------------------------------------------------
+app.put('/api/targets', (req, res) => {
+  const { targets } = req.body;
+  if (!targets || typeof targets !== 'object') {
+    return res.status(400).json({ error: 'targets deve ser um objeto' });
+  }
+  // Deep merge
+  Object.keys(targets).forEach(carId => {
+    if (!db.targets[carId]) db.targets[carId] = {};
+    Object.keys(targets[carId]).forEach(partKey => {
+      if (!db.targets[carId][partKey]) db.targets[carId][partKey] = {};
+      Object.assign(db.targets[carId][partKey], targets[carId][partKey]);
+    });
+  });
+  saveDB(db);
+  res.json({ targets: db.targets });
 });
 
 // ---------------------------------------------------

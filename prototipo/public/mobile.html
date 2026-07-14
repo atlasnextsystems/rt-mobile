@@ -23,8 +23,6 @@
 
     <header class="m-header">
       <h1>RT Pintura</h1>
-      <span class="m-status" id="m-status">conectando…</span>
-      <button class="m-config-btn" id="btn-api-config">Config API</button>
     </header>
 
     <div class="m-stepper" id="m-stepper">
@@ -67,9 +65,18 @@
 
       <div class="m-selection-summary" id="selection-summary"></div>
 
-      <div class="m-qty-display">
-        <span>Quantidade</span>
-        <div class="m-qty-value" id="qty-value">1</div>
+      <!-- Ajuste de Quantidade Rápido e Teclado -->
+      <div class="m-qty-adjuster-container">
+        <div class="m-qty-row">
+          <button class="m-qty-quick-btn" id="qty-minus-5" type="button">−5</button>
+          <button class="m-qty-quick-btn" id="qty-minus-1" type="button">−1</button>
+          <div class="m-qty-display">
+            <span>Quantidade</span>
+            <div class="m-qty-value" id="qty-value">1</div>
+          </div>
+          <button class="m-qty-quick-btn" id="qty-plus-1" type="button">＋1</button>
+          <button class="m-qty-quick-btn" id="qty-plus-5" type="button">＋5</button>
+        </div>
       </div>
 
       <div class="m-keypad" id="qty-keypad">
@@ -114,42 +121,7 @@
   <!-- Toast de confirmação -->
   <div class="m-toast" id="m-toast"></div>
 
-  <!-- Modal de configuração da API -->
-  <div class="m-modal-backdrop" id="modal-api-config" style="display:none; position:fixed; inset:0; align-items:center; justify-content:center; background:rgba(0,0,0,0.45);">
-    <div style="background:#fff; padding:1rem; width:320px; border-radius:8px;">
-      <h3 style="margin:0 0 0.5rem 0;">Configurar API</h3>
-      <input id="input-api-base" style="width:100%; padding:0.5rem;" placeholder="http://192.168.x.x:3000/api" />
-      <div style="display:flex; gap:0.5rem; justify-content:flex-end; margin-top:0.75rem;">
-        <button id="btn-api-cancel" class="m-action-btn">Cancelar</button>
-        <button id="btn-api-save" class="m-action-btn m-action-add">Salvar</button>
-      </div>
-    </div>
-  </div>
-
   <script src="types.js"></script>
   <script src="mobile.js"></script>
-
-  <script>
-    (function(){
-      const openBtn = document.getElementById('btn-api-config');
-      const modal = document.getElementById('modal-api-config');
-      const save = document.getElementById('btn-api-save');
-      const cancel = document.getElementById('btn-api-cancel');
-      const input = document.getElementById('input-api-base');
-      if (!openBtn) return;
-      openBtn.addEventListener('click', () => {
-        input.value = localStorage.getItem('RT_API_BASE') || window.RT_API_BASE || '';
-        modal.style.display = 'flex';
-      });
-      cancel.addEventListener('click', () => modal.style.display = 'none');
-      save.addEventListener('click', () => {
-        const val = input.value.trim();
-        if (val) localStorage.setItem('RT_API_BASE', val); else localStorage.removeItem('RT_API_BASE');
-        try { window.RT_API_BASE = val || undefined; } catch(e){}
-        window.location.reload();
-      });
-      modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
-    })();
-  </script>
 </body>
 </html>

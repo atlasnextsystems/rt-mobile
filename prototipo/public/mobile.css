@@ -169,3 +169,95 @@ body {
 .m-toast.show { transform: translateX(-50%) translateY(0); }
 .m-toast.error { background: var(--danger-color); }
 .m-toast.success { background: var(--success-color); }
+
+/* Ajustador rápido de quantidade */
+.m-qty-adjuster-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+.m-qty-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  width: 100%;
+}
+.m-qty-display {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  border-radius: 14px;
+}
+.m-qty-display span {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+.m-qty-display .m-qty-value {
+  font-family: monospace;
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+.m-qty-quick-btn {
+  width: 48px;
+  height: 52px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(99, 102, 241, 0.2);
+  background: #ffffff;
+  color: var(--accent-color);
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 5px rgba(99, 102, 241, 0.05);
+}
+.m-qty-quick-btn:hover {
+  background: rgba(99, 102, 241, 0.05);
+  border-color: var(--accent-color);
+}
+.m-qty-quick-btn:active {
+  transform: scale(0.93);
+  background: rgba(99, 102, 241, 0.1);
+}
+#qty-minus-5, #qty-minus-1 {
+  color: var(--danger-color);
+  border-color: rgba(239, 68, 68, 0.2);
+  box-shadow: 0 2px 5px rgba(239, 68, 68, 0.05);
+}
+#qty-minus-5:hover, #qty-minus-1:hover {
+  background: rgba(239, 68, 68, 0.05);
+  border-color: var(--danger-color);
+}
+#qty-minus-5:active, #qty-minus-1:active {
+  background: rgba(239, 68, 68, 0.1);
+}
+#qty-plus-5, #qty-plus-1 {
+  color: var(--success-color);
+  border-color: rgba(16, 185, 129, 0.2);
+  box-shadow: 0 2px 5px rgba(16, 185, 129, 0.05);
+}
+#qty-plus-5:hover, #qty-plus-1:hover {
+  background: rgba(16, 185, 129, 0.05);
+  border-color: var(--success-color);
+}
+#qty-plus-5:active, #qty-plus-1:active {
+  background: rgba(16, 185, 129, 0.1);
+}
+
+/* Esconde o botão Config API se ele ainda estiver no header de alguma forma */
+.m-config-btn {
+  display: none !important;
+}
+

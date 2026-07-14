@@ -6,7 +6,7 @@
 const API_BASE = window.RT_API_BASE || (window.location.origin ? `${window.location.origin}/api` : 'http://localhost:3000/api');
 
 let liveStock = null;   // snapshot mais recente vindo do servidor
-let selection = { carId: null, part: null, color: null, qty: 1 };
+let selection = { carId: null, part: null, color: null, qty: 0 };
 
 const el = (id) => document.getElementById(id);
 
@@ -17,18 +17,10 @@ async function refreshStock() {
     if (!res.ok) throw new Error('bad response');
     const data = await res.json();
     liveStock = data.stock;
-    setStatus(true);
     return liveStock;
   } catch (err) {
-    setStatus(false);
     return liveStock; // mantém o último snapshot conhecido
   }
-}
-
-function setStatus(online) {
-  const s = el('m-status');
-  s.textContent = online ? 'online' : 'sem conexão';
-  s.className = 'm-status ' + (online ? 'online' : 'offline');
 }
 
 // ---------- Passo 1: Carro ----------
@@ -45,7 +37,7 @@ function renderCarStep() {
 }
 
 function selectCar(carId) {
-  selection = { carId, part: null, color: null, qty: 1 };
+  selection = { carId, part: null, color: null, qty: 0 };
   highlightSelected('car-grid', CAR_MODELS[carId]);
   renderPartStep(carId);
   showStep(2);
@@ -94,7 +86,7 @@ function renderColorStep(carId, partKey) {
 
 function selectColor(colorKey, event) {
   selection.color = colorKey;
-  selection.qty = 1;
+  selection.qty = 0;
   [...el('color-grid').children].forEach((c) => c.classList.remove('selected'));
   if (event?.currentTarget) {
     event.currentTarget.classList.add('selected');
@@ -113,30 +105,31 @@ function updateQtyStep() {
   el('qty-value').textContent = qty;
   const current = liveStock[carId][part][color];
   el('current-stock-display').innerHTML = `Estoque atual: <b>${current}</b> peça(s)`;
-  el('btn-remove').disabled = current < qty;
+  el('btn-remove').disabled = current < qty || qty === 0;
 }
 
 function setQty(value) {
-  selection.qty = Math.max(1, Math.min(999, value));
+  selection.qty = Math.max(0, Math.min(999, value));
   updateQtyStep();
 }
 
 function bindUiActions() {
-  const qtyMinus = el('qty-minus');
-  const qtyPlus = el('qty-plus');
-  if (qtyMinus) qtyMinus.onclick = () => setQty(selection.qty - 1);
-  if (qtyPlus) qtyPlus.onclick = () => setQty(selection.qty + 1);
+  // Configuração dos botões de quantidade de ajuste rápido
+  el('qty-minus-5').onclick = () => setQty(selection.qty - 5);
+  el('qty-minus-1').onclick = () => setQty(selection.qty - 1);
+  el('qty-plus-1').onclick = () => setQty(selection.qty + 1);
+  el('qty-plus-5').onclick = () => setQty(selection.qty + 5);
 
   document.querySelectorAll('.m-back-btn').forEach((btn) => {
     btn.onclick = () => {
       const targetStep = Number(btn.dataset.backStep || 1);
       if (targetStep === 1) {
-        selection = { carId: selection.carId, part: null, color: null, qty: 1 };
+        selection = { carId: selection.carId, part: null, color: null, qty: 0 };
       } else if (targetStep === 2) {
         selection.color = null;
-        selection.qty = 1;
+        selection.qty = 0;
       } else if (targetStep === 3) {
-        selection.qty = 1;
+        selection.qty = 0;
       }
       showStep(targetStep);
     };
@@ -148,12 +141,12 @@ function bindUiActions() {
       const key = event.target.closest('button')?.dataset?.key;
       if (!key) return;
       if (key === 'clear') {
-        setQty(1);
+        setQty(0);
         return;
       }
       if (key === 'back') {
         const current = String(selection.qty);
-        const updated = current.length > 1 ? current.slice(0, -1) : '1';
+        const updated = current.length > 1 ? current.slice(0, -1) : '0';
         setQty(parseInt(updated, 10));
         return;
       }
@@ -169,7 +162,7 @@ function bindUiActions() {
   const btnRestart = el('btn-restart');
   if (btnRestart) {
     btnRestart.onclick = () => {
-      selection = { carId: null, part: null, color: null, qty: 1 };
+      selection = { carId: null, part: null, color: null, qty: 0 };
       showStep(1);
       [...(el('car-grid')?.children || [])].forEach((c) => c.classList.remove('selected'));
       [...(el('part-grid')?.children || [])].forEach((c) => c.classList.remove('selected'));
@@ -179,9 +172,40 @@ function bindUiActions() {
   }
 }
 
+// Negação de cliques futuros do stepper ou navegação de volta livre
+function setupStepperNavigation() {
+  document.querySelectorAll('.m-step-item').forEach((item) => {
+    item.style.cursor = 'pointer';
+    item.onclick = () => {
+      const step = +item.dataset.step;
+      if (step === 1) {
+        selection.part = null;
+        selection.color = null;
+        selection.qty = 0;
+        showStep(1);
+      } else if (step === 2 && selection.carId) {
+        selection.color = null;
+        selection.qty = 0;
+        showStep(2);
+      } else if (step === 3 && selection.carId && selection.part) {
+        selection.qty = 0;
+        showStep(3);
+      } else if (step === 4 && selection.carId && selection.part && selection.color) {
+        showStep(4);
+      }
+    };
+  });
+}
+
 // ---------- Envio ----------
 async function submitMovement(type) {
   const { carId, part, color, qty } = selection;
+  
+  if (qty <= 0) {
+    showToast('A quantidade deve ser maior que 0 para realizar movimentações.', 'error');
+    return;
+  }
+
   const operator = getOperatorName();
 
   try {
@@ -285,6 +309,7 @@ async function init() {
   renderCarStep();
   loadHistory();
   bindUiActions();
+  setupStepperNavigation();
   showStep(1);
   setInterval(refreshStock, 15000); // mantém o estoque atualizado em segundo plano
 }
