@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>RT Pintura - Lançamento de Estoque</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: https: http:; connect-src 'self' http: ws:; script-src 'self' 'unsafe-inline' http: https:; style-src 'self' 'unsafe-inline' http: https:">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="mobile.css">
+  <script>
+    // Carrega configuração da API caso exista
+    (function(){
+      try {
+        const stored = localStorage.getItem('RT_API_BASE');
+        if (stored) window.RT_API_BASE = stored;
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body>
+  <div class="m-app">
+
+    <header class="m-header">
+      <h1>RT Pintura</h1>
+      <span class="m-status" id="m-status">conectando…</span>
+      <button class="m-config-btn" id="btn-api-config">Config API</button>
+    </header>
+
+    <div class="m-stepper" id="m-stepper">
+      <div class="m-step-item active" data-step="1"><span>1</span><small>Carro</small></div>
+      <div class="m-step-item" data-step="2"><span>2</span><small>Peça</small></div>
+      <div class="m-step-item" data-step="3"><span>3</span><small>Cor</small></div>
+      <div class="m-step-item" data-step="4"><span>4</span><small>Qtd</small></div>
+    </div>
+
+    <!-- Passo 1: Carro -->
+    <section class="m-section m-step-visible" id="step-car">
+      <h2 class="m-step-title">1. Selecione o carro</h2>
+      <div class="m-pill-grid" id="car-grid"></div>
+    </section>
+
+    <!-- Passo 2: Peça -->
+    <section class="m-section m-step-hidden" id="step-part">
+      <h2 class="m-step-title">2. Selecione a peça</h2>
+      <div class="m-pill-grid" id="part-grid"></div>
+    </section>
+
+    <!-- Passo 3: Cor -->
+    <section class="m-section m-step-hidden" id="step-color">
+      <h2 class="m-step-title">3. Selecione a cor</h2>
+      <div class="m-color-grid" id="color-grid"></div>
+    </section>
+
+    <!-- Passo 4: Quantidade + Ação -->
+    <section class="m-section m-step-hidden" id="step-qty">
+      <h2 class="m-step-title">4. Digite a quantidade</h2>
+
+      <div class="m-selection-summary" id="selection-summary"></div>
+
+      <div class="m-qty-display">
+        <span>Quantidade</span>
+        <div class="m-qty-value" id="qty-value">1</div>
+      </div>
+
+      <div class="m-keypad" id="qty-keypad">
+        <button class="m-keypad-btn" data-key="1">1</button>
+        <button class="m-keypad-btn" data-key="2">2</button>
+        <button class="m-keypad-btn" data-key="3">3</button>
+        <button class="m-keypad-btn" data-key="4">4</button>
+        <button class="m-keypad-btn" data-key="5">5</button>
+        <button class="m-keypad-btn" data-key="6">6</button>
+        <button class="m-keypad-btn" data-key="7">7</button>
+        <button class="m-keypad-btn" data-key="8">8</button>
+        <button class="m-keypad-btn" data-key="9">9</button>
+        <button class="m-keypad-btn m-keypad-secondary" data-key="clear">C</button>
+        <button class="m-keypad-btn" data-key="0">0</button>
+        <button class="m-keypad-btn m-keypad-secondary" data-key="back">←</button>
+      </div>
+
+      <div class="m-current-stock" id="current-stock-display"></div>
+
+      <div class="m-action-buttons">
+        <button class="m-action-btn m-action-add" id="btn-add">
+          <span class="m-action-icon">＋</span> Adicionar
+        </button>
+        <button class="m-action-btn m-action-remove" id="btn-remove">
+          <span class="m-action-icon">－</span> Retirar
+        </button>
+      </div>
+
+      <button class="m-reset-flow" id="btn-restart">Recomeçar seleção</button>
+    </section>
+
+    <!-- Histórico -->
+    <section class="m-section m-history-section">
+      <h2 class="m-step-title">Últimas movimentações</h2>
+      <div class="m-history-list" id="history-list">
+        <div class="m-history-empty">Nenhuma movimentação ainda.</div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Toast de confirmação -->
+  <div class="m-toast" id="m-toast"></div>
+
+  <!-- Modal de configuração da API -->
+  <div class="m-modal-backdrop" id="modal-api-config" style="display:none; position:fixed; inset:0; align-items:center; justify-content:center; background:rgba(0,0,0,0.45);">
+    <div style="background:#fff; padding:1rem; width:320px; border-radius:8px;">
+      <h3 style="margin:0 0 0.5rem 0;">Configurar API</h3>
+      <input id="input-api-base" style="width:100%; padding:0.5rem;" placeholder="http://192.168.x.x:3000/api" />
+      <div style="display:flex; gap:0.5rem; justify-content:flex-end; margin-top:0.75rem;">
+        <button id="btn-api-cancel" class="m-action-btn">Cancelar</button>
+        <button id="btn-api-save" class="m-action-btn m-action-add">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="types.js"></script>
+  <script src="mobile.js"></script>
+
+  <script>
+    (function(){
+      const openBtn = document.getElementById('btn-api-config');
+      const modal = document.getElementById('modal-api-config');
+      const save = document.getElementById('btn-api-save');
+      const cancel = document.getElementById('btn-api-cancel');
+      const input = document.getElementById('input-api-base');
+      if (!openBtn) return;
+      openBtn.addEventListener('click', () => {
+        input.value = localStorage.getItem('RT_API_BASE') || window.RT_API_BASE || '';
+        modal.style.display = 'flex';
+      });
+      cancel.addEventListener('click', () => modal.style.display = 'none');
+      save.addEventListener('click', () => {
+        const val = input.value.trim();
+        if (val) localStorage.setItem('RT_API_BASE', val); else localStorage.removeItem('RT_API_BASE');
+        try { window.RT_API_BASE = val || undefined; } catch(e){}
+        window.location.reload();
+      });
+      modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+    })();
+  </script>
+</body>
+</html>
