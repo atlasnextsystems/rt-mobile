@@ -23,11 +23,23 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DB_FILE = path.join(__dirname, 'data', 'stock.json');
+const CATALOG_FILE = path.join(__dirname, 'data', 'catalog.json');
 const PUBLIC_DIR = path.join(__dirname, '..', 'public');
+
+function loadCatalog() {
+  if (fs.existsSync(CATALOG_FILE)) {
+    return JSON.parse(fs.readFileSync(CATALOG_FILE, 'utf-8'));
+  }
+  return {};
+}
+const catalog = loadCatalog();
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static(PUBLIC_DIR));
+
+const RTSCAN_DIR = path.join(__dirname, '..', '..', '..', 'RT Scan', 'prototipo');
+app.use('/rt-scan', express.static(RTSCAN_DIR));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(PUBLIC_DIR, 'mobile.html'));
@@ -39,7 +51,7 @@ app.get('/', (req, res) => {
 const INITIAL_STOCK = {
   '397': {
     FR: { '1H6': 1, '1G3': 1, '3R3': 1, '215': 1, '089': 1, '040': 1, '8X8': 1 },
-    SP: { '1H6': 1, '1G3': 1, '3R3': 1, '215': 1, '089': 1, '040': 1, '8X8': 1 },
+    BAR_FR: { '1H6': 1, '1G3': 1, '3R3': 1, '215': 1, '089': 1, '040': 1, '8X8': 1 },
     RR_LH: { '1H6': 1, '1G3': 1, '3R3': 1, '215': 1, '089': 1, '040': 1, '8X8': 1 },
     RR_RH: { '1H6': 1, '1G3': 1, '3R3': 1, '215': 1, '089': 1, '040': 1, '8X8': 1 },
     BAR_RR: { '1H6': 1, '1G3': 1, '3R3': 1, '215': 1, '089': 1, '040': 1, '8X8': 1 }
@@ -92,6 +104,9 @@ function ensureStockSchema(db) {
   const expectedModels = {
     '063': {
       FR: { '215': 0, '040': 0, '089': 0, '1H6': 0, '1G3': 0, '3R3': 0, '8X8': 0 }
+    },
+    '397': {
+      BAR_FR: { '1H6': 0, '1G3': 0, '3R3': 0, '215': 0, '089': 0, '040': 0, '8X8': 0 }
     }
   };
   let changed = false;
@@ -119,7 +134,14 @@ ensureStockSchema(db);
 // GET /api/stock -> estoque completo (rt-scan e mobile usam isso)
 // ---------------------------------------------------
 app.get('/api/stock', (req, res) => {
-  res.json({ stock: db.stock, rates: db.rates, targets: db.targets, timeScaleHours: db.timeScaleHours });
+  res.json({ stock: db.stock, rates: db.rates, targets: db.targets, timeScaleHours: db.timeScaleHours, catalog });
+});
+
+// ---------------------------------------------------
+// GET /api/catalog -> catálogo completo de carros, peças e cores
+// ---------------------------------------------------
+app.get('/api/catalog', (req, res) => {
+  res.json(catalog);
 });
 
 // ---------------------------------------------------

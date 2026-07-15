@@ -17,6 +17,14 @@ async function refreshStock() {
     if (!res.ok) throw new Error('bad response');
     const data = await res.json();
     liveStock = data.stock;
+    if (data.catalog) {
+      window.COLORS = data.catalog.COLORS || window.COLORS;
+      window.CAR_MODELS = data.catalog.CAR_MODELS || window.CAR_MODELS;
+      window.PARTS = data.catalog.PARTS || window.PARTS;
+      window.MODEL_PARTS = data.catalog.MODEL_PARTS || window.MODEL_PARTS;
+      window.MODEL_PART_COLORS = data.catalog.MODEL_PART_COLORS || window.MODEL_PART_COLORS;
+      window.ALL_CARS = data.catalog.ALL_CARS || window.ALL_CARS;
+    }
     return liveStock;
   } catch (err) {
     return liveStock; // mantém o último snapshot conhecido

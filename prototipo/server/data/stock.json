@@ -2,10 +2,10 @@
   "stock": {
     "397": {
       "FR": {
-        "215": 8,
+        "215": 7,
         "040": 0,
         "089": 0,
-        "1H6": 2,
+        "1H6": 7,
         "1G3": 0,
         "3R3": 0,
         "8X8": 0
@@ -35,6 +35,15 @@
         "1H6": 0,
         "1G3": 0,
         "3R3": 0,
+        "8X8": 0
+      },
+      "BAR_FR": {
+        "215": 0,
+        "1H6": 0,
+        "1G3": 5,
+        "3R3": 0,
+        "089": 0,
+        "040": 0,
         "8X8": 0
       }
     },
@@ -939,6 +948,222 @@
       "previousStock": 0,
       "newStock": 5,
       "operator": "davi"
+    },
+    {
+      "id": "mrlcvu41kx3t",
+      "timestamp": "2026-07-15T00:42:43.633Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "add",
+      "quantity": 2,
+      "previousStock": 0,
+      "newStock": 2,
+      "operator": "operador"
+    },
+    {
+      "id": "mrlcxm91axik",
+      "timestamp": "2026-07-15T00:44:06.757Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "add",
+      "quantity": 2,
+      "previousStock": 2,
+      "newStock": 4,
+      "operator": "operador"
+    },
+    {
+      "id": "mrlcy5kckfb4",
+      "timestamp": "2026-07-15T00:44:31.788Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "add",
+      "quantity": 7,
+      "previousStock": 4,
+      "newStock": 11,
+      "operator": "operador"
+    },
+    {
+      "id": "mrlcy5ove3yc",
+      "timestamp": "2026-07-15T00:44:31.951Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "add",
+      "quantity": 7,
+      "previousStock": 11,
+      "newStock": 18,
+      "operator": "operador"
+    },
+    {
+      "id": "mrlcy5wz69k7",
+      "timestamp": "2026-07-15T00:44:32.243Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "add",
+      "quantity": 7,
+      "previousStock": 18,
+      "newStock": 25,
+      "operator": "operador"
+    },
+    {
+      "id": "mrlcy627wf61",
+      "timestamp": "2026-07-15T00:44:32.431Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "add",
+      "quantity": 7,
+      "previousStock": 25,
+      "newStock": 32,
+      "operator": "operador"
+    },
+    {
+      "id": "mrlcy66q7ybg",
+      "timestamp": "2026-07-15T00:44:32.594Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "add",
+      "quantity": 7,
+      "previousStock": 32,
+      "newStock": 39,
+      "operator": "operador"
+    },
+    {
+      "id": "mrlcy6asbedu",
+      "timestamp": "2026-07-15T00:44:32.740Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "add",
+      "quantity": 7,
+      "previousStock": 39,
+      "newStock": 46,
+      "operator": "operador"
+    },
+    {
+      "id": "mrlcy6fhwac9",
+      "timestamp": "2026-07-15T00:44:32.909Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "add",
+      "quantity": 7,
+      "previousStock": 46,
+      "newStock": 53,
+      "operator": "operador"
+    },
+    {
+      "id": "mrlcy6jtscj8",
+      "timestamp": "2026-07-15T00:44:33.065Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "add",
+      "quantity": 7,
+      "previousStock": 53,
+      "newStock": 60,
+      "operator": "operador"
+    },
+    {
+      "id": "mrlcy6objiqa",
+      "timestamp": "2026-07-15T00:44:33.227Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "add",
+      "quantity": 7,
+      "previousStock": 60,
+      "newStock": 67,
+      "operator": "operador"
+    },
+    {
+      "id": "mrlcy6sipy2m",
+      "timestamp": "2026-07-15T00:44:33.378Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "add",
+      "quantity": 7,
+      "previousStock": 67,
+      "newStock": 74,
+      "operator": "operador"
+    },
+    {
+      "id": "mrlcy6wvn9cl",
+      "timestamp": "2026-07-15T00:44:33.535Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "add",
+      "quantity": 7,
+      "previousStock": 74,
+      "newStock": 81,
+      "operator": "operador"
+    },
+    {
+      "id": "mrlcy71gr7h4",
+      "timestamp": "2026-07-15T00:44:33.700Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "add",
+      "quantity": 7,
+      "previousStock": 81,
+      "newStock": 88,
+      "operator": "operador"
+    },
+    {
+      "id": "mrlcy7fw6ed4",
+      "timestamp": "2026-07-15T00:44:34.220Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "add",
+      "quantity": 7,
+      "previousStock": 88,
+      "newStock": 95,
+      "operator": "operador"
+    },
+    {
+      "id": "mrlczg9a2gkz",
+      "timestamp": "2026-07-15T00:45:32.302Z",
+      "carId": "397",
+      "part": "BAR_FR",
+      "color": "1G3",
+      "type": "remove",
+      "quantity": 90,
+      "previousStock": 95,
+      "newStock": 5,
+      "operator": "operador"
+    },
+    {
+      "id": "mrld0bwjfp7b",
+      "timestamp": "2026-07-15T00:46:13.315Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "1H6",
+      "type": "add",
+      "quantity": 5,
+      "previousStock": 2,
+      "newStock": 7,
+      "operator": "operador"
+    },
+    {
+      "id": "mrldfjr9itud",
+      "timestamp": "2026-07-15T00:58:03.333Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "215",
+      "type": "remove",
+      "quantity": 1,
+      "previousStock": 8,
+      "newStock": 7,
+      "operator": "admin"
     }
   ],
   "targets": {

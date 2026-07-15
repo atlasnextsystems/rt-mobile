@@ -19,8 +19,8 @@ window.CAR_MODELS = {
 };
 
 window.PARTS = {
-  FR: { name: 'Bar FR (Bumper Bar Front)', label: 'FR' },
-  SP: { name: 'SP (Side Panel)', label: 'SP' },
+  FR: { name: 'FR', label: 'FR' },
+  BAR_FR: { name: 'Bar FR (Bumper Bar Front)', label: 'Bar FR' },
   RR_RH: { name: 'RR - RH (Rear, Right Hand)', label: 'RR - RH' },
   RR_LH: { name: 'RR - LH (Rear, Left Hand)', label: 'RR - LH' },
   BAR_RR: { name: 'BAR - RR (Bumper Bar Rear)', label: 'BAR - RR' },
@@ -28,7 +28,7 @@ window.PARTS = {
 };
 
 window.MODEL_PARTS = {
-  '397': ['FR', 'SP', 'RR_LH', 'RR_RH', 'BAR_RR'],
+  '397': ['FR', 'BAR_FR', 'RR_LH', 'RR_RH', 'BAR_RR'],
   '063': ['FR'],
   'd90': ['FR', 'RR_LH', 'RR_RH'],
   '535': ['FR', 'HB']
@@ -37,7 +37,7 @@ window.MODEL_PARTS = {
 window.MODEL_PART_COLORS = {
   '397': {
     FR: ['1H6', '1G3', '3R3', '215', '089', '040', '8X8'],
-    SP: ['1H6', '1G3', '3R3', '215', '089', '040', '8X8'],
+    BAR_FR: ['1H6', '1G3', '3R3', '215', '089', '040', '8X8'],
     RR_LH: ['1H6', '1G3', '3R3', '215', '089', '040', '8X8'],
     RR_RH: ['1H6', '1G3', '3R3', '215', '089', '040', '8X8'],
     BAR_RR: ['1H6', '1G3', '3R3', '215', '089', '040', '8X8']
