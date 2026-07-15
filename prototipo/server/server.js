@@ -138,6 +138,32 @@ app.get('/api/stock', (req, res) => {
 });
 
 // ---------------------------------------------------
+// PUT /api/stock -> atualizar o estoque completo/parcial diretamente
+// body: { stock: { carId: { partKey: { colorKey: int } } } }
+// ---------------------------------------------------
+app.put('/api/stock', (req, res) => {
+  const { stock } = req.body;
+  if (!stock || typeof stock !== 'object') {
+    return res.status(400).json({ error: 'stock deve ser um objeto' });
+  }
+  // Deep merge/update
+  Object.keys(stock).forEach(carId => {
+    if (!db.stock[carId]) db.stock[carId] = {};
+    Object.keys(stock[carId]).forEach(partKey => {
+      if (!db.stock[carId][partKey]) db.stock[carId][partKey] = {};
+      Object.keys(stock[carId][partKey]).forEach(colorKey => {
+        const val = parseInt(stock[carId][partKey][colorKey], 10);
+        if (!isNaN(val) && val >= 0) {
+          db.stock[carId][partKey][colorKey] = val;
+        }
+      });
+    });
+  });
+  saveDB(db);
+  res.json({ stock: db.stock });
+});
+
+// ---------------------------------------------------
 // GET /api/catalog -> catálogo completo de carros, peças e cores
 // ---------------------------------------------------
 app.get('/api/catalog', (req, res) => {
