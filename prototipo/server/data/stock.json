@@ -23,7 +23,7 @@
         "215": 21,
         "040": 1,
         "089": 0,
-        "1H6": 0,
+        "1H6": 6,
         "1G3": 0,
         "3R3": 0,
         "8X8": 0
@@ -1164,13 +1164,85 @@
       "previousStock": 8,
       "newStock": 7,
       "operator": "admin"
+    },
+    {
+      "id": "mrle0em33tsb",
+      "timestamp": "2026-07-15T01:14:16.443Z",
+      "carId": "397",
+      "part": "RR_RH",
+      "color": "1H6",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 0,
+      "newStock": 1,
+      "operator": "admin"
+    },
+    {
+      "id": "mrle0em4axya",
+      "timestamp": "2026-07-15T01:14:16.444Z",
+      "carId": "397",
+      "part": "RR_RH",
+      "color": "1H6",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 1,
+      "newStock": 2,
+      "operator": "admin"
+    },
+    {
+      "id": "mrle0em5bvmf",
+      "timestamp": "2026-07-15T01:14:16.445Z",
+      "carId": "397",
+      "part": "RR_RH",
+      "color": "1H6",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 2,
+      "newStock": 3,
+      "operator": "admin"
+    },
+    {
+      "id": "mrle0eps1031",
+      "timestamp": "2026-07-15T01:14:16.576Z",
+      "carId": "397",
+      "part": "RR_RH",
+      "color": "1H6",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 3,
+      "newStock": 4,
+      "operator": "admin"
+    },
+    {
+      "id": "mrle0eptfseo",
+      "timestamp": "2026-07-15T01:14:16.577Z",
+      "carId": "397",
+      "part": "RR_RH",
+      "color": "1H6",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 4,
+      "newStock": 5,
+      "operator": "admin"
+    },
+    {
+      "id": "mrle0eq1mwp1",
+      "timestamp": "2026-07-15T01:14:16.585Z",
+      "carId": "397",
+      "part": "RR_RH",
+      "color": "1H6",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 5,
+      "newStock": 6,
+      "operator": "admin"
     }
   ],
   "targets": {
     "397": {
       "FR": {
         "215": 4,
-        "040": 0,
+        "040": 9,
         "089": 0,
         "1H6": 0,
         "1G3": 0,
@@ -1190,7 +1262,7 @@
         "215": 0,
         "040": 0,
         "089": 0,
-        "1H6": 0,
+        "1H6": 8,
         "1G3": 0,
         "3R3": 0,
         "8X8": 0
@@ -1202,6 +1274,15 @@
         "1H6": 0,
         "1G3": 0,
         "3R3": 0,
+        "8X8": 0
+      },
+      "BAR_FR": {
+        "215": 0,
+        "1H6": 0,
+        "1G3": 0,
+        "3R3": 0,
+        "089": 0,
+        "040": 0,
         "8X8": 0
       }
     },
