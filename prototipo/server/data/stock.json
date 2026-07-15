@@ -2,7 +2,7 @@
   "stock": {
     "397": {
       "FR": {
-        "215": 7,
+        "215": 8,
         "040": 0,
         "089": 0,
         "1H6": 7,
@@ -23,7 +23,7 @@
         "215": 21,
         "040": 1,
         "089": 0,
-        "1H6": 6,
+        "1H6": 11,
         "1G3": 0,
         "3R3": 0,
         "8X8": 0
@@ -1236,12 +1236,36 @@
       "previousStock": 5,
       "newStock": 6,
       "operator": "admin"
+    },
+    {
+      "id": "mrle7tq8rbly",
+      "timestamp": "2026-07-15T01:20:02.624Z",
+      "carId": "397",
+      "part": "RR_RH",
+      "color": "1H6",
+      "type": "add",
+      "quantity": 5,
+      "previousStock": 6,
+      "newStock": 11,
+      "operator": "operador"
+    },
+    {
+      "id": "mrle9sp183e6",
+      "timestamp": "2026-07-15T01:21:34.597Z",
+      "carId": "397",
+      "part": "FR",
+      "color": "215",
+      "type": "add",
+      "quantity": 1,
+      "previousStock": 7,
+      "newStock": 8,
+      "operator": "operador"
     }
   ],
   "targets": {
     "397": {
       "FR": {
-        "215": 4,
+        "215": 3,
         "040": 9,
         "089": 0,
         "1H6": 0,
